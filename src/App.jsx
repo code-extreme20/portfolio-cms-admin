@@ -16,6 +16,10 @@ import Blogs from "./pages/Blogs";
 import Media from "./pages/Media";
 import Messages from "./pages/Messages";
 
+/* ================================
+   PROTECTED ADMIN LAYOUT
+================================ */
+
 const ProtectedLayout = () => {
   const { loading, isAuthenticated } = useAuth();
 
@@ -26,7 +30,7 @@ const ProtectedLayout = () => {
           <div className="mx-auto h-10 w-10 animate-spin rounded-full border-4 border-slate-700 border-t-blue-500" />
 
           <p className="mt-4 text-sm text-slate-400">
-            Loading admin panel...
+            Checking authentication...
           </p>
         </div>
       </div>
@@ -34,27 +38,90 @@ const ProtectedLayout = () => {
   }
 
   if (!isAuthenticated) {
-    return (
-      <Navigate
-        to="/login"
-        replace
-      />
-    );
+    return <Navigate to="/login" replace />;
   }
 
   return <AdminLayout />;
 };
 
+/* ================================
+   ROOT REDIRECT
+================================ */
+
+const RootRedirect = () => {
+  const { loading, isAuthenticated } = useAuth();
+
+  if (loading) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-[#020617]">
+        <div className="text-center">
+          <div className="mx-auto h-10 w-10 animate-spin rounded-full border-4 border-slate-700 border-t-blue-500" />
+
+          <p className="mt-4 text-sm text-slate-400">
+            Loading...
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  if (isAuthenticated) {
+    return <Navigate to="/dashboard" replace />;
+  }
+
+  return <Navigate to="/login" replace />;
+};
+
+/* ================================
+   LOGIN REDIRECT
+   Prevent authenticated users
+   from opening login page
+================================ */
+
+const LoginRoute = () => {
+  const { loading, isAuthenticated } = useAuth();
+
+  if (loading) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-[#020617]">
+        <div className="text-center">
+          <div className="mx-auto h-10 w-10 animate-spin rounded-full border-4 border-slate-700 border-t-blue-500" />
+
+          <p className="mt-4 text-sm text-slate-400">
+            Loading...
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  if (isAuthenticated) {
+    return <Navigate to="/dashboard" replace />;
+  }
+
+  return <Login />;
+};
+
+/* ================================
+   APP
+================================ */
+
 const App = () => {
   return (
     <Routes>
-      {/* LOGIN */}
+      {/* ==========================
+          LOGIN
+      ========================== */}
+
       <Route
         path="/login"
-        element={<Login />}
+        element={<LoginRoute />}
       />
 
-      {/* PROTECTED ADMIN */}
+      {/* ==========================
+          PROTECTED ADMIN
+      ========================== */}
+
       <Route element={<ProtectedLayout />}>
         {/* DASHBOARD */}
         <Route
@@ -117,26 +184,22 @@ const App = () => {
         />
       </Route>
 
-      {/* ROOT */}
+      {/* ==========================
+          ROOT
+      ========================== */}
+
       <Route
         path="/"
-        element={
-          <Navigate
-            to="/dashboard"
-            replace
-          />
-        }
+        element={<RootRedirect />}
       />
 
-      {/* UNKNOWN URL */}
+      {/* ==========================
+          UNKNOWN URL
+      ========================== */}
+
       <Route
         path="*"
-        element={
-          <Navigate
-            to="/dashboard"
-            replace
-          />
-        }
+        element={<RootRedirect />}
       />
     </Routes>
   );
