@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 import {
   FolderKanban,
@@ -251,14 +252,13 @@ const Dashboard = () => {
 
       {/* Stats */}
       <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-
         {statCards.map((card) => {
           const Icon = card.icon;
 
           return (
-            <a
+            <Link
               key={card.title}
-              href={card.path}
+              to={card.path}
               className="group rounded-xl border border-slate-800 bg-slate-900 p-4 transition hover:-translate-y-0.5 hover:border-slate-700 hover:bg-slate-900/80"
             >
               <div className="flex items-start justify-between">
@@ -285,10 +285,9 @@ const Dashboard = () => {
                   {card.description}
                 </p>
               </div>
-            </a>
+            </Link>
           );
         })}
-
       </div>
 
       {/* Main Content */}
@@ -313,9 +312,9 @@ const Dashboard = () => {
                 const Icon = action.icon;
 
                 return (
-                  <a
+                  <Link
                     key={action.title}
-                    href={action.path}
+                    to={action.path}
                     className="group flex items-center gap-3 rounded-lg border border-slate-800 bg-slate-950 p-3 transition hover:border-blue-500/40 hover:bg-slate-800"
                   >
                     <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-500/10 text-blue-400">
@@ -336,7 +335,7 @@ const Dashboard = () => {
                       size={16}
                       className="shrink-0 text-slate-600 transition group-hover:text-blue-400"
                     />
-                  </a>
+                  </Link>
                 );
               })}
             </div>
@@ -358,12 +357,12 @@ const Dashboard = () => {
                 </p>
               </div>
 
-              <a
-                href="/messages"
+              <Link
+                to="/messages"
                 className="text-xs font-medium text-blue-400 transition hover:text-blue-300"
               >
                 View all
-              </a>
+              </Link>
             </div>
 
             <div className="divide-y divide-slate-800">
@@ -447,6 +446,7 @@ const Dashboard = () => {
 
         <div className="grid gap-2 p-3 sm:grid-cols-3">
 
+          {/* API Server */}
           <div className="flex items-center justify-between rounded-lg bg-slate-950 px-3 py-2.5">
             <div>
               <p className="text-xs font-medium text-slate-300">
@@ -464,6 +464,7 @@ const Dashboard = () => {
             </span>
           </div>
 
+          {/* Database */}
           <div className="flex items-center justify-between rounded-lg bg-slate-950 px-3 py-2.5">
             <div>
               <p className="text-xs font-medium text-slate-300">
@@ -481,6 +482,7 @@ const Dashboard = () => {
             </span>
           </div>
 
+          {/* Authentication */}
           <div className="flex items-center justify-between rounded-lg bg-slate-950 px-3 py-2.5">
             <div>
               <p className="text-xs font-medium text-slate-300">
