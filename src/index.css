@@ -1,0 +1,198 @@
+@import "tailwindcss";
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+  background: #ffffff;
+  color: #0f172a;
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+#root {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Remove default button/input appearance issues */
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Better scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+/* =========================================================
+   COMPACT ADMIN CMS
+   ========================================================= */
+
+.admin-compact {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Page outer spacing */
+.admin-compact > div {
+  max-width: 100%;
+}
+
+/* Reduce common large page padding */
+.admin-compact .p-8 {
+  padding: 1.25rem;
+}
+
+.admin-compact .px-8 {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+.admin-compact .py-8 {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+
+.admin-compact .p-7 {
+  padding: 1.125rem;
+}
+
+.admin-compact .p-6 {
+  padding: 1rem;
+}
+
+/* Reduce large vertical gaps */
+.admin-compact .gap-8 {
+  gap: 1rem;
+}
+
+.admin-compact .gap-7 {
+  gap: 0.875rem;
+}
+
+.admin-compact .gap-6 {
+  gap: 0.875rem;
+}
+
+/* Reduce common section spacing */
+.admin-compact .space-y-8 > :not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.admin-compact .space-y-6 > :not(:last-child) {
+  margin-bottom: 0.875rem;
+}
+
+/* Page headings */
+.admin-compact h1 {
+  line-height: 1.15;
+}
+
+.admin-compact .text-4xl {
+  font-size: 1.875rem;
+}
+
+.admin-compact .text-3xl {
+  font-size: 1.625rem;
+}
+
+.admin-compact .text-2xl {
+  font-size: 1.375rem;
+}
+
+/* Smaller stat cards */
+.admin-compact .min-h-\[140px\] {
+  min-height: 105px;
+}
+
+.admin-compact .min-h-\[150px\] {
+  min-height: 110px;
+}
+
+/* Reduce large rounded cards */
+.admin-compact .rounded-2xl {
+  border-radius: 0.875rem;
+}
+
+/* Search/input areas */
+.admin-compact input,
+.admin-compact textarea,
+.admin-compact select {
+  min-height: 44px;
+}
+
+/* Buttons */
+.admin-compact button {
+  line-height: 1.2;
+}
+
+/* Tables */
+.admin-compact table th {
+  padding-top: 0.7rem;
+  padding-bottom: 0.7rem;
+}
+
+.admin-compact table td {
+  padding-top: 0.65rem;
+  padding-bottom: 0.65rem;
+}
+
+/* Images/cards */
+.admin-compact img {
+  max-height: 280px;
+}
+
+/* Mobile */
+@media (max-width: 1023px) {
+  .admin-compact .p-8 {
+    padding: 1rem;
+  }
+
+  .admin-compact .px-8 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .admin-compact .py-8 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+}
